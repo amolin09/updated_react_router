@@ -33,8 +33,11 @@ ul {
 
 .car-container {
   margin: 50px;
+  width: 20px;
 }
 
 .car-paper {
+  width: 600px;
   padding: 50px;
 }
+

@@ -2,25 +2,26 @@ import React from 'react'
 import cars from '../cars.json'
 import { useParams } from "react-router-dom"
 import { Container, Paper, Chip } from '@mui/material'
+import "../App.css"
 
 
-// import MUI components here //
-// Container, Paper, Chip //
 
-const Car = (props) => {
+const Car = () => {
 
     const { carId } = useParams();
     const currCar = cars[carId-1];
-    if(!currCar.Miles_per_Gallon){
+
+    if(!currCar.Miles_per_Gallon){ //I noticed some cars do not have a value for Miles per Gallon and the result would display "null". I used this check to replace null with a friendlier term
         currCar.Miles_per_Gallon = "Unknown"
     }
 
     return (
-        <Container>
-            <Paper>
-            <h1>
+        <div className='car-body'> 
+        <Container className='car-container'>
+            <Paper className='car-paper'>
+            <h2>
                 {currCar.Name.toUpperCase()}
-            </h1>
+            </h2>
                 <Chip label={"Id: " + currCar.id} ></Chip>
                 <Chip label={"Name: " + currCar.Name}></Chip>
                 <Chip label={"Miles per Gallon: " + currCar.Miles_per_Gallon}></Chip>
@@ -33,7 +34,7 @@ const Car = (props) => {
                 <Chip label={"Origin: " + currCar.Origin}></Chip>
             </Paper>
         </Container>
-        
+        </div>
     )
 }
 
